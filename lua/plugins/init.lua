@@ -7,6 +7,7 @@ return {
   require("plugins.telescope"),
   require("plugins.mason"),
   require("plugins.nvim-cmp"),
-  require("plugins.treesitter")
-  -- Добавляйте сюда новые плагины
+  require("plugins.treesitter"),
+  require("plugins.autopairs")
+    -- Добавляйте сюда новые плагины
 }

@@ -8,6 +8,7 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 opt.smartindent = true
+opt.autoindent = true
 
 local function setup_dark_cursor()
     -- Темно-серые варианты (от более темного к светлому)
