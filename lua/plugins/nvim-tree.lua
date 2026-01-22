@@ -18,7 +18,7 @@ return {
       -- Действия
       actions = {
         open_file = {
-          quit_on_open = true,  -- Закрывать дерево при открытии файла
+          quit_on_open = false,  -- Закрывать дерево при открытии файла
         },
       },
       

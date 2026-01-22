@@ -31,21 +31,11 @@ require("lazy").setup(require("plugins"), {
 
 -- Автоматическое открытие nvim-tree
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  callback = function(data)
-    local directory = vim.fn.isdirectory(data.file) == 1
-    
-    if not directory then
-      vim.defer_fn(function()
-        if vim.fn.argc() == 0 then
-          pcall(function()
-            require("nvim-tree.api").tree.open()
-          end)
-        end
-      end, 100)
-    else
+  callback = function()
+    vim.defer_fn(function()
       pcall(function()
         require("nvim-tree.api").tree.open()
       end)
-    end
+    end, 50)
   end,
 })
