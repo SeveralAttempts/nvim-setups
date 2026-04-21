@@ -24,7 +24,7 @@ return {
       -- Список LSP серверов для автоматической установки
       ensure_installed = {
         "lua_ls",       -- Lua
-        "clangd",       -- C/C++
+        "omnisharp",    -- C#
         "bashls",       -- Bash
       },
       -- Автоматическая настройка LSP после установки (новый формат)
@@ -34,9 +34,6 @@ return {
     -- 3. Базовые настройки LSP (новый API для Neovim 0.11+)
     -- Глобальные настройки для всех LSP
     local on_attach = function(client, bufnr)
-      -- Включить completion
-      client.server_capabilities.semanticTokensProvider = nil
-      
       -- Горячие клавиши для LSP
       local opts = { buffer = bufnr, remap = false }
       
@@ -75,13 +72,19 @@ return {
       }
     })
     
-    -- Настройки для clangd (если нужны особые параметры)
-    vim.lsp.config('clangd', {
+    -- Настройки для OmniSharp (C#)
+    vim.lsp.config('omnisharp', {
       on_attach = on_attach,
       capabilities = capabilities,
-      -- Добавьте здесь особые настройки для clangd
+      settings = {
+        omnisharp = {
+          enableRoslynAnalyzers = true,
+          organizeImportsOnFormat = true,
+          enableImportCompletion = true,
+        }
+      }
     })
-    
+
     -- Настройки для bashls (если нужны особые параметры)
     vim.lsp.config('bashls', {
       on_attach = on_attach,
